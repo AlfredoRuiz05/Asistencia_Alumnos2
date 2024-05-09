@@ -1,0 +1,30 @@
+<h1>bienvenidos al sitio principal</h1>
+
+<a href="{% url 'iniciar_sesion' %}">ir al login</a><br/> 
+
+<a href="{% url 'pagina_principal' %}">ir home</a><br/> 
+
+<h3>lista de usuarios</h3>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>NOMBRE DE USUARIO</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+
+                <tr>
+                    <td>{{usuario.first_name}}</td>
+                    <td>{{usuario.last_name}}</td>
+                    <td>{{usuario.username}}</td>
+                </tr>
+           
+        {% endfor %}    
+    </tbody>
+</table>
