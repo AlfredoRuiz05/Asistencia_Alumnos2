@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app.usuarios'
+    'app.usuarios',
+    'app.clases'
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"

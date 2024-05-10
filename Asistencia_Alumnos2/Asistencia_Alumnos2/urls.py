@@ -10,5 +10,6 @@ urlpatterns = [
     path('login/', views.login, name='iniciar_sesion'),
 
     #includes
-    path("usuarios/", include('app.usuarios.urls'))
+    path("usuarios/", include('app.usuarios.urls')),
+    path("clases/", include('app.clases.urls'))
 ]

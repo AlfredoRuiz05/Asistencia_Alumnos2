@@ -1,0 +1,6 @@
+<h1>bienvenidos al sitio principal</h1>
+<a href="{% url 'iniciar_sesion' %}">ir al login</a><br/> 
+
+<a href="{%url 'usuarios:listar_todos'%}">ver todos los usuarios</a><br/> 
+
+<a href="{%url 'clases:listar_clases'%}">ver todos las clases</a><br/> 
