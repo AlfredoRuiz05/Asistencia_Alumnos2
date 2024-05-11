@@ -1,3 +1,4 @@
+import os
 """
 Django settings for Asistencia_Alumnos2 project.
 
@@ -125,7 +126,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'statics/'
+
+RUTA_CARPETA_STATIC = os.path.join(BASE_DIR, "statics")
+
+print("RUTA_CARPETA_STATIC: ", RUTA_CARPETA_STATIC)
+
+STATICFILES_DIRS = (
+    RUTA_CARPETA_STATIC,
+)
+    
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
