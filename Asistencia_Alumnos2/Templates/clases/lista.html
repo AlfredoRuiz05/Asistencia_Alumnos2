@@ -1,10 +1,43 @@
-
+<!DOCTYPE html>
 {% extends 'base/base.html' %}
-
 {% block contenido %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">LISTA DE CLASES</h1>
+</div>
+<div class="row">
+    <div class="col">
+        <a href="{% url 'clases:crear' %}" class="btn btn-primary">Nueva clase</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Cantidad Alumnos</th>
+                    <th scope="col">Cantidad Alumnos Presentes</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
 
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">LISTA DE CLASES</h1>
-    </div>  
+                {% for clase in clases %}
 
+
+
+                <tr>
+                    <td>{{clase.fecha}}</td>
+                    <td></td>
+                    <td>{{clase.get_cantidad_presentes}}</td>
+                    <td>
+                        <a href="{% url 'clases:editar' clase.pk %}" class="btn btn-primary btn-sm">EDITAR</a>
+                        <a href="{% url 'asistencias:marcar_asistencia' clase.id %}"
+                            class="btn btn-success btn-sm">MARCAR ASISTENCIAS</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        {% include 'base/paginacion.html' %}
+    </div>
+</div>
 {% endblock contenido %}
