@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'base/base.html' %}
+
+{% block contenido %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+    <h1 class="h2">LISTA DE MATERIAS</h1>
+
+
+</div>
+<div class="row">
+
+    <div class="col">
+        <a href="#" class="btn btn-primary disabled">Nueva materia</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categorias</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for materia in materias %}
+
+
+
+                <tr>
+                    <td>{{materia.nombre}}</td>
+                    <td>
+                        <!--
+                                {{materia.categorias}}
+                                {{materia.categorias.all}}
+                                -->
+                        {% for c in materia.categorias.all %}
+                        <span class="badge rounded-pill text-bg-warning">{{c.nombre}}</span>
+                        {% endfor %}
+
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-primary btn-sm disabled">EDITAR</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% include 'base/paginacion.html' %}
+    </div>
+</div>
+{% endblock contenido %}
