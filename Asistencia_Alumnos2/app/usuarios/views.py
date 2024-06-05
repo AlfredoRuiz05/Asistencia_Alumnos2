@@ -26,7 +26,7 @@ class ListarUsuarios(ListView):
     template_name ='usuarios/listar_todos.html'
     model = Usuario
     context_object_name = 'usuarios'
-    paginate_by = 2
+    paginate_by = 20
 
     def get_context_data(self, **kwargs):
         ctx = super(ListarUsuarios, self).get_context_data(**kwargs)
@@ -34,4 +34,4 @@ class ListarUsuarios(ListView):
 
         return ctx
     def get_queryset(self):
-        return self.model.objects.all().order_by("id")
+        return self.model.objects.all().order_by("last_name", "first_name")

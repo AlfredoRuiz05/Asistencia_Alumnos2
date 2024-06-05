@@ -29,8 +29,7 @@
                     <td>{{clase.get_cantidad_presentes}}</td>
                     <td>
                         <a href="{% url 'clases:editar' clase.pk %}" class="btn btn-primary btn-sm">EDITAR</a>
-                        <a href="{% url 'asistencias:marcar_asistencia' clase.id %}"
-                            class="btn btn-success btn-sm">MARCAR ASISTENCIAS</a>
+                        <a href="{% url 'asistencias:marcar_asistencias' clase.id %}" class="btn btn-success btn-sm">MARCAR ASISTENCIAS</a>
                     </td>
                 </tr>
                 {% endfor %}

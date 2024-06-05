@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 
 from app.clases.models import Clase
 from app.usuarios.models import Usuario
+from app.utils.decorators import verificar_permisos
 
 from .models import Asistencia
 
+@verificar_permisos
 def marcar_asistencia(request, clase_id):
     template_name = 'asistencias/marcar_asistencias.html'
 
@@ -19,13 +21,13 @@ def marcar_asistencia(request, clase_id):
     }
     return render(request, template_name, ctx)
 
-
+@verificar_permisos
 def crear_asistencia(request, clase_id, usuario_id):
     a = Asistencia.objects.create(
         usuario_id=usuario_id,
         clase_id=clase_id
     )
 
-    return redirect("asistencias:marcar_asistencia", clase_id=clase_id)
+    return redirect("asistencias:marcar_asistencias", clase_id=clase_id)
 
 

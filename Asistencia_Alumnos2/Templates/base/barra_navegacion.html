@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+    {% if user.is_authenticated and user.es_admin %}
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{% url 'usuarios:listar_todos' %}">
-                <svg class="bi">
-                    <use xlink:href="#house-fill"></use>
-                </svg>
+            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
+                href="{% url 'usuarios:listar_todos' %}">
                 <i class="fas fa-users"></i>
                 LISTA DE USUARIOS
             </a>
@@ -13,9 +12,6 @@
 
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="{% url 'clases:listar_clases' %}">
-                <svg class="bi">
-                    <use xlink:href="#cart"></use>
-                </svg>
                 <i class="fas fa-graduation-cap"></i>
                 LISTA DE CLASES
             </a>
@@ -27,43 +23,46 @@
                 MATERIAS
             </a>
         </li>
-
-
-
     </ul>
 
-    
     <hr class="my-3">
+    {% endif %}
 
-    <ul class="nav flex-column mb-auto">
+    {% if user.is_authenticated and user.es_alumno %}
+    <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="{% url 'registrarme' %}">
-
-                REGISTRARME
+            <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{% url 'clases:mis_clases' %}">
+                <i class="fas fa-graduation-cap"></i>
+                Mis Clases
             </a>
         </li>
+    </ul>
+    <hr class="my-3">
+    {% endif %}
+
+
+    <ul class="nav flex-column mb-auto">
+
         {% if not user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="{% url 'registrarme' %}">
-
-                    REGISTRARME
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link d-flex align-items-center gap-2" href="{% url 'registrarme' %}">
+                <i class="fas fa-user-plus"></i> REGISTRARME
+            </a>
+        </li>
         {% endif %}
-
         <li class="nav-item">
 
             {% if user.is_authenticated %}
-                <a class="nav-link d-flex align-items-center gap-2" href="{% url 'cerrar_sesion'  %}">
-                    SALIR
-                </a>
+            <a class="nav-link d-flex align-items-center gap-2" href="{% url 'cerrar_sesion'  %}">
+                <i class="fa-solid fa-right-from-bracket"></i> ({{user.username}}) SALIR
+            </a>
             {% else %}
-                <a class="nav-link d-flex align-items-center gap-2" href="{% url 'iniciar_sesion'  %}">
-                    INICIAR SESION
-                </a>
+            <a class="nav-link d-flex align-items-center gap-2" href="{% url 'iniciar_sesion'  %}">
+                <i class="fa-solid fa-right-to-bracket"></i> INICIAR SESION
+            </a>
             {% endif %}
-                
-            
+
+
         </li>
     </ul>
 </div>
