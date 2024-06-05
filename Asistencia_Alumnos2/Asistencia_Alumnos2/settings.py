@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'app.usuarios',
     'app.clases',
     'app.asistencias',
-    'app.materias'
+    'app.materias',
+    'django_filters'
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"
@@ -124,6 +125,8 @@ USE_TZ = True
 
 STATIC_URL = 'statics/'
 
+
+
 RUTA_CARPETA_STATIC = os.path.join(BASE_DIR, "statics")
 
 
@@ -131,8 +134,15 @@ STATICFILES_DIRS = (
     RUTA_CARPETA_STATIC,
 )
     
-
-
+# Contenido Media
+RUTA_CARPETA_MEDIA = os.path.join(BASE_DIR, "media")
+MEDIA_URL = "media/"
+MEDIA_ROOT = RUTA_CARPETA_MEDIA
+"""
+(
+    RUTA_CARPETA_MEDIA,
+)
+"""
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

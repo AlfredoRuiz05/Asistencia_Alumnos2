@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 {% extends 'base/base.html' %}
-
+{% load static%}
 {% block contenido %}
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
     <h1 class="h2">LISTA DE MATERIAS</h1>
 
+
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <form method="GET">
+            <div class="input-grou">
+                <input type="text" class="form-control" name="buscador" placeholder="Ingrese el nombre de la materia para buscar" value="{{buscador}}">
+                <button type="submit" class="btn btn-outline-secondary">BUSCAR</button>
+
+            </div>
+        </form>
+
+    </div>
 
 </div>
 <div class="row">
